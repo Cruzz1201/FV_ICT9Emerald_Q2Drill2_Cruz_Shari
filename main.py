@@ -1,48 +1,25 @@
 from pyscript import document, display
 
+gr7 = {'Lilo Pelekai', 'Russell Grayson', 'Vennelope Von Schweetz', 'Elio Solis'}
+gr8 = {'Riley Anderson', 'Meilin Lee', 'Luca Paguro', 'Miguel Rivera'}
+gr9 = {'Wendy Darling', 'Andy Davis', 'Barley Lightfoot'}
+gr10 = {'Shari Cruz', 'Mirabel Madrigal', 'Kida Tatch'}
+
+all_verified_members = gr7.union(gr8, gr9, gr10) #combines all the sets into one master list. 
 
 def new_members(e):
     document.getElementById('new_members').innerHTML = " " #clears previous result
-    f_name = document.getElementById('fname').value
-    l_name = document.getElementById('lname').value
+    f_name = document.getElementById('fname').value.strip()
+    l_name = document.getElementById('lname').value.strip()
 
-    full_name = f_name + " " + l_name
+    added_person = f_name + " " + l_name
+    real_members = all_verified_members | {added_person}
 
+    true_members = "<br>".join(sorted(real_members))
 
-    # sets of club members
-    gr7 = {'Lilo Pelekai', 'Russell Grayson'}
-    gr8 = {'Riley Anderson', 'Meilin Lee'}
-    gr9 = {'Wendy Darling', 'Andy Davis'}
-    gr10 = {'Shari Cruz', 'Mirabel Madrigal'}
+    # display(f"<b>Welcome HE Club Members!:</b><br>{real_members}", target="new_members")
+    # display(f"<br>Total Members in the Club: {len(real_members)}", target="new_members") #counts how many names there are on a list
 
-    #combines all sets into one
-    all_members = gr7 | gr8 | gr9 | gr10
-
-    members_list = "<br>".join(sorted(all_members))
-
-    #counts how many names there are on a list
-
-    display(f"Welcome Members! :")
-    display(f"Total Members in the Club: {len(all_members)}", target="new_members")
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-   
-
-
-  
+    document.getElementById('new_members').innerHTML = (
+        f"<b><i>Official HE Club Members:</i></b><br> {true_members}<br><br> Total Members in the Club: {len(real_members)}"
+    )
