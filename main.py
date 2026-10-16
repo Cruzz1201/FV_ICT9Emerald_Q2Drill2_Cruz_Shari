@@ -1,6 +1,5 @@
 from pyscript import document, display
 
-members = ['Shari Cruz', 'Tiana Bayou', 'Nani Pelekai', 'Cookie Monster', 'Colette Tatou']
 
 def new_members(e):
     document.getElementById('new_members').innerHTML = " " #clears previous result
